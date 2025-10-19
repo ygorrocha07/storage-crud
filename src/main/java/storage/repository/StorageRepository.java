@@ -21,7 +21,10 @@ public class StorageRepository {
         itens.add(new Item("Item 9", 90, 45.0));
         itens.add(new Item("Item 10", 100, 50.0));
     }
-    public List<Item> allItens(){
-        return itens;
+    public List<Item> allItens(){ return itens;}
+
+    public String addItens (Item item){
+        itens.add(item);
+        return "Item adicionado com sucesso!";
     }
 }
