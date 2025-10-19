@@ -11,7 +11,6 @@ import java.util.List;
 public class StorageService {
     @Autowired
     StorageRepository storageRepository;
-    public List<Item> allItens(){
-        return storageRepository.allItens();
-    }
+    public List<Item> allItens(){ return storageRepository.allItens();}
+    public String addItemService(Item item){return storageRepository.addItens(item); }
 }
