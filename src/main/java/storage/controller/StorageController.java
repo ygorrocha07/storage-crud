@@ -1,10 +1,7 @@
 package storage.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import storage.domain.Item;
 import storage.services.StorageService;
 
@@ -22,4 +19,6 @@ public class StorageController {
     }
     @PostMapping("/addItem")
     public String addItem(@RequestBody Item item){return storageService.addItemService(item);}
+    @PostMapping("/findItem")
+    public Item findItem(@RequestParam String nome){return storageService.findItem(nome);}
 }
