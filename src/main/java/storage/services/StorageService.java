@@ -13,4 +13,5 @@ public class StorageService {
     StorageRepository storageRepository;
     public List<Item> allItens(){ return storageRepository.allItens();}
     public String addItemService(Item item){return storageRepository.addItens(item); }
+    public Item findItem(String nome){return storageRepository.findItem(nome);}
 }

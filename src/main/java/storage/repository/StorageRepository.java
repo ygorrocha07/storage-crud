@@ -27,4 +27,12 @@ public class StorageRepository {
         itens.add(item);
         return "Item adicionado com sucesso!";
     }
+    public Item findItem(String nome){
+        for(int i = 0; i <= itens.size(); i++){
+            if(itens.get(i).getNome().equalsIgnoreCase(nome)){
+                return itens.get(i);
+            }
+        }
+        return null;
+    }
 }
