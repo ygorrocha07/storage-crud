@@ -10,18 +10,15 @@ import java.util.List;
 public class StorageRepository {
     List<Item> itens = new ArrayList<>();
     public StorageRepository() {
-        itens.add(new Item("Item 1", 10, 5.0));
-        itens.add(new Item("Item 2", 20, 10.0));
-        itens.add(new Item("Item 3", 30, 15.0));
-        itens.add(new Item("Item 4", 40, 20.0));
-        itens.add(new Item("Item 5", 50, 25.0));
-        itens.add(new Item("Item 6", 60, 30.0));
-        itens.add(new Item("Item 7", 70, 35.0));
-        itens.add(new Item("Item 8", 80, 40.0));
-        itens.add(new Item("Item 9", 90, 45.0));
-        itens.add(new Item("Item 10", 100, 50.0));
+
     }
-    public List<Item> allItens(){ return itens;}
+    public List<Item> allItens(){
+        if(itens.size() > 0) {
+            return itens;
+        } else{
+            throw new RuntimeException("Não há itens na lista!");
+        }
+    }
 
     public String addItens (Item item){
         itens.add(item);
@@ -34,5 +31,26 @@ public class StorageRepository {
             }
         }
         return null;
+    }
+    private Item findItemPrivado(String nome){
+        if(itens.isEmpty()){
+            return null;
+        }
+        for(int i = 0; i < itens.size(); i++){
+            if(itens.get(i).getNome().equalsIgnoreCase(nome)){
+                return itens.get(i);
+            }
+        }
+        return null;
+    }
+    public String removeItem(String nome){
+        Item item = findItemPrivado(nome);
+        if(item == null){
+            return "Item não encontrado!";
+        } else{
+            itens.remove(item);
+            return "Item removido!";
+        }
+
     }
 }
