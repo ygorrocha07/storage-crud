@@ -11,7 +11,15 @@ import java.util.List;
 public class StorageService {
     @Autowired
     StorageRepository storageRepository;
-    public List<Item> allItens(){ return storageRepository.allItens();}
+    public List<Item> allItens() throws Exception {
+
+        try{
+            return storageRepository.allItens();
+        }catch (Exception ex) {
+            throw new Exception(ex.getMessage());
+        }
+    }
     public String addItemService(Item item){return storageRepository.addItens(item); }
     public Item findItem(String nome){return storageRepository.findItem(nome);}
+    public String removeItem(String nome){return storageRepository.removeItem(nome);}
 }
