@@ -1,5 +1,6 @@
 package storage.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import storage.domain.ApiResponse;
@@ -39,4 +40,6 @@ public class StorageController {
     public Item findItem(@RequestParam String nome){return storageService.findItem(nome);}
     @PostMapping("/removeItem")
     public String removeItem(@RequestParam String nome){return storageService.removeItem(nome);}
+    @PostMapping("/updateItem")
+    public String updateItem(@RequestParam String nome, @RequestParam Integer quantidade, @RequestParam Double valor) throws JsonProcessingException {return storageService.updateItem(nome, quantidade, valor);}
 }

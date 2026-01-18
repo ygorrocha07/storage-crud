@@ -1,5 +1,6 @@
 package storage.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import storage.domain.Item;
@@ -22,4 +23,5 @@ public class StorageService {
     public String addItemService(Item item){return storageRepository.addItens(item); }
     public Item findItem(String nome){return storageRepository.findItem(nome);}
     public String removeItem(String nome){return storageRepository.removeItem(nome);}
+    public String updateItem(String nome, Integer quantidade, Double valor) throws JsonProcessingException {return storageRepository.updateItem(nome, quantidade, valor); }
 }
