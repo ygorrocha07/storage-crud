@@ -1,5 +1,7 @@
 package storage.repository;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
 import storage.domain.Item;
 
@@ -51,6 +53,15 @@ public class StorageRepository {
             itens.remove(item);
             return "Item removido!";
         }
-
+    }
+    public String updateItem(String nome, Integer quantidade, Double valor) throws JsonProcessingException {
+        Item item = findItemPrivado(nome);
+        if(item == null){
+            return "Item não encontrado!";
+        } else{
+            itens.get(itens.indexOf(item)).setQuantidade(quantidade);
+            itens.get(itens.indexOf(item)).setValor(valor);
+            return "Item atualizado com sucesso!" + new ObjectMapper().writeValueAsString(itens.get(itens.indexOf(item)));
+        }
     }
 }
